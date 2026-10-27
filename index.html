@@ -5,35 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080b12">
 <title>HIT STORE</title>
+<script src="https://telegram.org/js/telegram-web-app.js?64"></script>
 <style>
-*{box-sizing:border-box}
-:root{color-scheme:dark}
-body{margin:0;background:#080b12;color:#f5f7fb;font-family:Arial,Helvetica,sans-serif;padding-bottom:82px}
-header{padding:25px 18px 20px;background:radial-gradient(ellipse at top right,#15345e 0%,#0c1424 48%,#080b12 100%)}
-.logo{font-size:26px;font-weight:900;letter-spacing:2px}.logo span{color:#39a4ff}
-header p{color:#9eabc0;font-size:13px;margin:8px 0 19px}
-.search{width:100%;padding:14px 15px;border:1px solid #263650;border-radius:14px;background:#101827;color:#fff;font-size:15px;outline:none}
-.search:focus{border-color:#1689ff}
-h2{font-size:19px;margin:23px 18px 14px}
-.categories{display:flex;gap:8px;overflow-x:auto;padding:0 18px 4px;scrollbar-width:none}
-.categories::-webkit-scrollbar{display:none}
-.cat{white-space:nowrap;border:1px solid #26334a;background:#111827;color:#c7d5e9;padding:10px 14px;border-radius:20px;font-size:13px}
-.cat.active{background:#1689ff;color:white;border-color:#1689ff}
+*{box-sizing:border-box} :root{color-scheme:dark}
+body{margin:0;background:radial-gradient(ellipse at 50% -10%,#142d52 0%,#080b12 48%);color:#f5f7fb;font-family:Inter,Arial,Helvetica,sans-serif;padding-bottom:88px;min-height:100vh}
+header{padding:28px 18px 22px;background:linear-gradient(145deg,rgba(19,49,86,.96),rgba(8,13,24,.9));border:1px solid rgba(67,155,255,.16);border-radius:0 0 28px 28px;box-shadow:0 16px 40px rgba(0,0,0,.22)}
+.logo{font-size:29px;font-weight:950;letter-spacing:2.6px;text-shadow:0 0 24px rgba(57,164,255,.18)}.logo span{color:#39a4ff}
+header p{color:#b6c7dd;font-size:13px;margin:8px 0 19px} header:after{content:"APP STORE • DIGITAL";display:block;margin-top:15px;color:#62b6ff;font-size:10px;letter-spacing:2px;font-weight:800}
+.search{width:100%;padding:15px 16px;border:1px solid #304766;border-radius:16px;background:rgba(8,15,27,.84);color:#fff;font-size:15px;outline:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}.search:focus{border-color:#2999ff;box-shadow:0 0 0 3px rgba(41,153,255,.12)}
+h2{font-size:18px;margin:25px 18px 14px;letter-spacing:.1px}
+.categories{display:flex;gap:8px;overflow-x:auto;padding:0 18px 4px;scrollbar-width:none}.categories::-webkit-scrollbar{display:none}
+.cat{white-space:nowrap;border:1px solid #293b55;background:rgba(17,27,43,.92);color:#c7d5e9;padding:10px 15px;border-radius:20px;font-size:13px;transition:.18s}
+.cat.active{background:linear-gradient(135deg,#35a5ff,#0874ed);color:white;border-color:#45adff;box-shadow:0 5px 18px rgba(22,137,255,.25)}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:0 14px}
-.card{background:linear-gradient(150deg,#131c2b,#0e141e);border:1px solid #202d40;border-radius:17px;padding:13px;min-width:0}
-.appicon{width:58px;height:58px;border-radius:16px;background:#1b2a40;overflow:hidden;display:grid;place-items:center;border:1px solid #293a53}
-.appicon img{width:100%;height:100%;object-fit:cover;display:block}
-.fallback{font-size:26px;font-weight:bold;color:#45aaff}
-.name{font-weight:bold;margin-top:12px;font-size:15px;overflow-wrap:anywhere}
-.desc{font-size:12px;color:#93a2b8;margin:7px 0 13px;min-height:28px;line-height:1.35}
-.actions{display:flex;gap:7px;align-items:center}
-.order{flex:1;min-width:0;padding:11px 5px;border:0;border-radius:10px;background:#1689ff;color:white;font-weight:bold;font-size:12px}
-.fav{width:39px;height:37px;border:1px solid #2a3a52;border-radius:10px;background:#182234;color:#dbeaff;font-size:18px}
-.empty{grid-column:1/-1;color:#9ba9be;text-align:center;padding:32px 12px}
-.notice{margin:18px 14px 0;color:#7e8da4;font-size:11px;line-height:1.45}
-nav{position:fixed;z-index:5;bottom:0;left:0;right:0;background:rgba(13,19,30,.97);border-top:1px solid #263044;display:flex;justify-content:space-around;padding:12px 4px max(12px,env(safe-area-inset-bottom))}
-nav button{background:none;border:0;color:#9ba9be;font-size:11px;line-height:1.5}
-nav button.active{color:#40a8ff}
+.card{background:linear-gradient(150deg,rgba(23,35,53,.98),rgba(12,19,30,.98));border:1px solid #26374e;border-radius:20px;padding:14px;min-width:0;box-shadow:0 8px 24px rgba(0,0,0,.13);transition:transform .18s,border-color .18s}.card:active{transform:scale(.985);border-color:#358fe8}
+.appicon{width:62px;height:62px;border-radius:18px;background:linear-gradient(135deg,#1b3554,#142033);overflow:hidden;display:grid;place-items:center;border:1px solid #344a66;box-shadow:0 5px 16px rgba(0,0,0,.2)}
+.appicon img{width:100%;height:100%;object-fit:cover;display:block}.fallback{font-size:25px;font-weight:bold;color:#45aaff}
+.name{font-weight:800;margin-top:13px;font-size:15px;overflow-wrap:anywhere;letter-spacing:.05px}
+.desc{font-size:12px;color:#93a2b8;margin:7px 0 13px;min-height:30px;line-height:1.35}
+.actions{display:flex;gap:7px;align-items:center}.order{flex:1;min-width:0;padding:12px 5px;border:0;border-radius:12px;background:linear-gradient(135deg,#39a8ff,#0878ef);color:white;font-weight:800;font-size:12px;box-shadow:0 5px 14px rgba(22,137,255,.18)}
+.fav{width:41px;height:40px;border:1px solid #30445f;border-radius:12px;background:#182538;color:#dbeaff;font-size:18px}
+.panel{margin:0 14px;padding:17px;background:#111827;border:1px solid #24334a;border-radius:16px}
+.profile-head{display:flex;align-items:center;gap:13px;margin-bottom:15px}.avatar{width:58px;height:58px;border-radius:50%;background:#17395e;display:grid;place-items:center;font-size:23px;color:#fff;font-weight:bold;overflow:hidden}.avatar img{width:100%;height:100%;object-fit:cover}
+.muted{color:#98a7bd;font-size:13px;line-height:1.5}.profile-row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid #263044;font-size:13px}
+.linkbtn{display:block;text-align:center;text-decoration:none;background:#1689ff;color:white;border-radius:11px;padding:12px;margin-top:12px;font-weight:bold;font-size:13px}
+.empty{grid-column:1/-1;color:#9ba9be;text-align:center;padding:32px 12px}.notice{margin:18px 14px 0;color:#7e8da4;font-size:11px;line-height:1.45}
+nav{position:fixed;z-index:5;bottom:0;left:0;right:0;background:rgba(8,14,24,.94);backdrop-filter:blur(18px);border-top:1px solid #26364b;display:flex;justify-content:space-around;padding:12px 4px max(12px,env(safe-area-inset-bottom));box-shadow:0 -10px 30px rgba(0,0,0,.2)}
+nav button{background:none;border:0;color:#9ba9be;font-size:11px;line-height:1.5}nav button.active{color:#40a8ff}
 </style>
 </head>
 <body>
@@ -42,7 +40,7 @@ nav button.active{color:#40a8ff}
   <p>Твои приложения — в одном месте</p>
   <input class="search" id="search" placeholder="⌕  Найти приложение..." aria-label="Поиск приложений">
 </header>
-
+<section id="catalogView">
 <h2>Категории</h2>
 <div class="categories" id="categories">
   <button class="cat active" data-cat="Все">Все</button>
@@ -51,96 +49,111 @@ nav button.active{color:#40a8ff}
   <button class="cat" data-cat="Игры">Игры</button>
   <button class="cat" data-cat="Другое">Другое</button>
 </div>
-
-<h2 id="sectionTitle">Популярные приложения</h2>
+<h2 id="sectionTitle">Каталог приложений</h2>
 <div class="grid" id="apps"></div>
-<p class="notice">Наличие приложений и возможность установки зависят от региона и устройства. Заказ отправит вас в Telegram-бот.</p>
-
+<p class="notice">Доступность приложений зависит от региона и устройства. Нажатие «Заказать» откроет сообщение для поддержки.</p>
+</section>
+<section id="profileView" hidden>
+<h2>Мой профиль</h2>
+<div class="panel">
+ <div class="profile-head"><div class="avatar" id="avatar">HS</div><div><div id="profileName" style="font-weight:bold;font-size:17px">Гость HIT STORE</div><div id="profileUsername" class="muted">Профиль Telegram</div></div></div>
+ <div class="profile-row"><span>Telegram ID</span><span id="profileId">Доступен при запуске в Telegram</span></div>
+ <div class="profile-row"><span>Избранное</span><span id="profileFavs">0 приложений</span></div>
+ <p class="muted">Профиль показывает данные Telegram, если приложение открыто внутри Telegram. На обычной веб-странице имя не запрашивается.</p>
+ <a class="linkbtn" href="https://t.me/LesyaHelping">Написать в поддержку</a>
+</div>
+</section>
 <nav>
   <button class="active" id="homeTab">⌂<br>Главная</button>
   <button id="catalogTab">▦<br>Каталог</button>
   <button id="favoritesTab">♡<br>Избранное</button>
   <button id="profileTab">☻<br>Профиль</button>
 </nav>
-
 <script>
-const BOT_USERNAME = "TestminiappBBot";
-const items = [
- {name:"MAX",domain:"max.ru",fallback:"M",cat:"Социальные",desc:"Общение и сообщения"},
- {name:"VK",domain:"vk.com",fallback:"VK",cat:"Социальные",desc:"Музыка, видео и друзья"},
+const SUPPORT_USERNAME="LesyaHelping";
+const items=[
+ {name:"Minecraft",domain:"minecraft.net",fallback:"M",cat:"Игры",desc:"Игра для установки по запросу"},
+ {name:"GTA: San Andreas",domain:"rockstargames.com",fallback:"GTA",cat:"Игры",desc:"Игра для установки по запросу"},
+ {name:"Null's Brawl",domain:"nulls.gg",fallback:"NB",cat:"Игры",desc:"Фанатский сервер Brawl Stars"},
  {name:"СберБанк",domain:"sberbank.ru",fallback:"С",cat:"Банки",desc:"Банковские услуги"},
- {name:"Т-Банк",domain:"tbank.ru",fallback:"Т",cat:"Банки",desc:"Финансы и платежи"},
- {name:"Minecraft",domain:"minecraft.net",fallback:"M",cat:"Игры",desc:"Игра и приключения"},
- {name:"Telegram",domain:"telegram.org",fallback:"✈",cat:"Социальные",desc:"Сообщения и каналы"},
- {name:"YouTube",domain:"youtube.com",fallback:"▶",cat:"Другое",desc:"Видео и развлечения"},
- {name:"Чат-рулетка",domain:"chatroulette.com",fallback:"C",cat:"Социальные",desc:"Видеочаты"}
+ {name:"Т-Банк",domain:"tbank.ru",fallback:"Т",cat:"Банки",desc:"Банковские услуги"},
+ {name:"ВТБ Онлайн",domain:"vtb.ru",fallback:"В",cat:"Банки",desc:"Банковские услуги"},
+ {name:"Альфа-Банк",domain:"alfabank.ru",fallback:"А",cat:"Банки",desc:"Банковские услуги"},
+ {name:"Газпромбанк",domain:"gazprombank.ru",fallback:"Г",cat:"Банки",desc:"Банковские услуги"},
+ {name:"ПСБ",domain:"psbank.ru",fallback:"П",cat:"Банки",desc:"Банковские услуги"},
+ {name:"Россельхозбанк",domain:"rshb.ru",fallback:"Р",cat:"Банки",desc:"Банковские услуги"},
+ {name:"Почта России",domain:"pochta.ru",fallback:"П",cat:"Другое",desc:"Почтовые отправления"},
+ {name:"РЖД Пассажирам",domain:"rzd.ru",fallback:"РЖД",cat:"Другое",desc:"Билеты и поездки"},
+ {name:"Почта Mail.ru",domain:"e.mail.ru",fallback:"М",cat:"Другое",desc:"Электронная почта"},
+ {name:"RuStore",domain:"rustore.ru",fallback:"R",cat:"Другое",desc:"Магазин приложений"},
+ {name:"Госуслуги",domain:"gosuslugi.ru",fallback:"Г",cat:"Другое",desc:"Государственные услуги"},
+ {name:"2ГИС",domain:"2gis.ru",fallback:"2Г",cat:"Другое",desc:"Карты и навигация"},
+ {name:"Яндекс Go",domain:"go.yandex",fallback:"Я",cat:"Другое",desc:"Поездки и доставка"},
+ {name:"Яндекс Почта",domain:"mail.yandex.ru",fallback:"Я",cat:"Другое",desc:"Электронная почта"},
+ {name:"Яндекс Браузер",domain:"browser.yandex.ru",fallback:"Я",cat:"Другое",desc:"Браузер и поиск"},
+ {name:"VK",domain:"vk.com",fallback:"VK",cat:"Социальные",desc:"Социальная сеть"},
+ {name:"Одноклассники",domain:"ok.ru",fallback:"OK",cat:"Социальные",desc:"Общение с друзьями"},
+ {name:"MAX",domain:"max.ru",fallback:"M",cat:"Социальные",desc:"Общение и сообщения"}
 ];
-let category = "Все";
-let favorites = [];
-let favOnly = false;
-const apps = document.getElementById("apps");
-const search = document.getElementById("search");
-
+let category="Все", favorites=[], favOnly=false;
+const apps=document.getElementById("apps"), search=document.getElementById("search");
 function makeIcon(item){
- const box=document.createElement("div");
- box.className="appicon";
- const img=document.createElement("img");
- img.src="https://www.google.com/s2/favicons?domain="+encodeURIComponent(item.domain)+"&sz=128";
- img.alt=item.name;
- img.loading="lazy";
- img.onerror=()=>{
-   box.innerHTML="";
-   const fallback=document.createElement("span");
-   fallback.className="fallback";
-   fallback.textContent=item.fallback;
-   box.appendChild(fallback);
- };
- box.appendChild(img);
- return box;
+ const box=document.createElement("div");box.className="appicon";
+ const img=document.createElement("img");img.src="https://www.google.com/s2/favicons?domain="+encodeURIComponent(item.domain)+"&sz=128";img.alt=item.name;img.loading="lazy";
+ img.onerror=()=>{box.innerHTML="";const f=document.createElement("span");f.className="fallback";f.textContent=item.fallback;box.appendChild(f)};
+ box.appendChild(img);return box;
+}
+function orderApp(name){
+ const orderNumber=Math.floor(Math.random()*99999)+1;
+ const moscowTime=new Intl.DateTimeFormat("ru-RU",{
+  timeZone:"Europe/Moscow",hour:"2-digit",minute:"2-digit",hourCycle:"h23"
+ }).format(new Date());
+ const message="Заказ #"+orderNumber+" · Время: "+moscowTime+" МСК · Приложение: "+name;
+ const target="https://t.me/"+SUPPORT_USERNAME;
+ const deepLink=target+"?text="+encodeURIComponent(message);
+ // Открываем Telegram с текстом заказа; если клиент не подставляет текст, сообщение можно скопировать из запасной ссылки.
+ window.location.href=deepLink;
 }
 function render(){
  const q=search.value.trim().toLowerCase();
- const list=items.filter(x=>
-   (category==="Все"||x.cat===category) &&
-   x.name.toLowerCase().includes(q) &&
-   (!favOnly||favorites.includes(x.name))
- );
- apps.innerHTML="";
- document.getElementById("sectionTitle").textContent=favOnly?"Избранное":"Популярные приложения";
- if(!list.length){
-   const empty=document.createElement("div");
-   empty.className="empty";
-   empty.textContent=favOnly?"В избранном пока пусто":"Ничего не найдено";
-   apps.appendChild(empty);
-   return;
- }
+ const list=items.filter(x=>(category==="Все"||x.cat===category)&&x.name.toLowerCase().includes(q)&&(!favOnly||favorites.includes(x.name)));
+ apps.innerHTML="";document.getElementById("sectionTitle").textContent=favOnly?"Избранное":"Каталог приложений";
+ if(!list.length){const e=document.createElement("div");e.className="empty";e.textContent=favOnly?"В избранном пока пусто":"Ничего не найдено";apps.appendChild(e);return}
  list.forEach(item=>{
-   const card=document.createElement("article");card.className="card";
-   card.appendChild(makeIcon(item));
-   const name=document.createElement("div");name.className="name";name.textContent=item.name;
-   const desc=document.createElement("div");desc.className="desc";desc.textContent=item.desc;
-   const actions=document.createElement("div");actions.className="actions";
-   const order=document.createElement("button");order.className="order";order.textContent="Заказать";
-   order.onclick=()=>{window.location.href="https://t.me/"+BOT_USERNAME+"?start=app_"+encodeURIComponent(item.name.replace(/\s+/g,"_"));};
-   const fav=document.createElement("button");fav.className="fav";fav.textContent=favorites.includes(item.name)?"♥":"♡";fav.setAttribute("aria-label","Добавить в избранное");
-   fav.onclick=()=>{favorites.includes(item.name)?favorites=favorites.filter(n=>n!==item.name):favorites.push(item.name);render()};
-   actions.append(order,fav);
-   card.append(name,desc,actions);
-   apps.appendChild(card);
+  const card=document.createElement("article");card.className="card";card.appendChild(makeIcon(item));
+  const name=document.createElement("div");name.className="name";name.textContent=item.name;
+  const desc=document.createElement("div");desc.className="desc";desc.textContent=item.desc;
+  const actions=document.createElement("div");actions.className="actions";
+  const order=document.createElement("button");order.className="order";order.textContent="Заказать";order.onclick=()=>orderApp(item.name);
+  const fav=document.createElement("button");fav.className="fav";fav.textContent=favorites.includes(item.name)?"♥":"♡";fav.setAttribute("aria-label","Добавить в избранное");
+  fav.onclick=()=>{favorites.includes(item.name)?favorites=favorites.filter(n=>n!==item.name):favorites.push(item.name);document.getElementById("profileFavs").textContent=favorites.length+" приложений";render()};
+  actions.append(order,fav);card.append(name,desc,actions);apps.appendChild(card);
  });
 }
-document.querySelectorAll(".cat[data-cat]").forEach(button=>button.addEventListener("click",()=>{
- category=button.dataset.cat;favOnly=false;
- document.querySelectorAll(".cat[data-cat]").forEach(b=>b.classList.toggle("active",b===button));
- render();
-}));
-search.addEventListener("input",render);
-function showAll(){category="Все";favOnly=false;search.value="";document.querySelectorAll(".cat[data-cat]").forEach(b=>b.classList.toggle("active",b.dataset.cat==="Все"));render();}
-document.getElementById("homeTab").onclick=()=>{showAll();setTab("homeTab")};
-document.getElementById("catalogTab").onclick=()=>{showAll();document.getElementById("categories").scrollIntoView({behavior:"smooth"});setTab("catalogTab")};
-document.getElementById("favoritesTab").onclick=()=>{favOnly=true;render();setTab("favoritesTab")};
-document.getElementById("profileTab").onclick=()=>{window.location.href="https://t.me/"+BOT_USERNAME;};
 function setTab(id){document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.id===id))}
+function showCatalog(){document.getElementById("catalogView").hidden=false;document.getElementById("profileView").hidden=true;setTab("homeTab");render()}
+document.querySelectorAll(".cat[data-cat]").forEach(b=>b.addEventListener("click",()=>{category=b.dataset.cat;favOnly=false;document.querySelectorAll(".cat[data-cat]").forEach(c=>c.classList.toggle("active",c===b));render()}));
+search.addEventListener("input",render);
+document.getElementById("homeTab").onclick=()=>{category="Все";favOnly=false;search.value="";showCatalog()};
+document.getElementById("catalogTab").onclick=()=>{showCatalog();document.getElementById("categories").scrollIntoView({behavior:"smooth"})};
+document.getElementById("favoritesTab").onclick=()=>{document.getElementById("catalogView").hidden=false;document.getElementById("profileView").hidden=true;favOnly=true;render();setTab("favoritesTab")};
+document.getElementById("profileTab").onclick=()=>{
+ document.getElementById("catalogView").hidden=true;document.getElementById("profileView").hidden=false;setTab("profileTab");
+ const user=window.Telegram?.WebApp?.initDataUnsafe?.user;
+ if(user){
+  document.getElementById("profileName").textContent=[user.first_name,user.last_name].filter(Boolean).join(" ")||"Пользователь Telegram";
+  document.getElementById("profileUsername").textContent=user.username?"@"+user.username:"Пользователь Telegram";
+  document.getElementById("profileId").textContent=String(user.id);
+  document.getElementById("avatar").textContent=(user.first_name||"H").slice(0,1).toUpperCase();
+  if(user.photo_url){const img=document.createElement("img");img.src=user.photo_url;img.alt="Аватар";img.onerror=()=>img.remove();document.getElementById("avatar").replaceChildren(img)}
+ }else{
+  document.getElementById("profileName").textContent="Гость HIT STORE";
+  document.getElementById("profileUsername").textContent="Открой мини-приложение в Telegram";
+  document.getElementById("profileId").textContent="Недоступен в браузере";
+ }
+ document.getElementById("profileFavs").textContent=favorites.length+" приложений";
+};
+if(window.Telegram?.WebApp){window.Telegram.WebApp.ready();window.Telegram.WebApp.expand()}
 render();
 </script>
 </body>
